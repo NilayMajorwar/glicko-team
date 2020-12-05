@@ -42,7 +42,7 @@ def _glicko_d_sq(player_mu, others: List[Tuple[float, float]]):
 
 
 # Runs the Glicko algorithm given a player's initial rating and series of games
-def glicko_multi_update(player_mu, player_phi, others: List[Tuple[Tuple[float, float], int]]):
+def glicko_multi_update(player_mu, player_phi, others: List[Tuple[Tuple[float, float], float]]):
     others_ratings = [x[0] for x in others]
     d_sq = _glicko_d_sq(player_mu, others_ratings)
     # Find summation

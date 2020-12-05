@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import List
-from glicko import glicko_single_update
+from src.glicko import glicko_single_update
 
 # Glicko default parameters
 GLICKO_DEFAULT_RATING = 1500
@@ -19,11 +19,9 @@ class Rating(object):
     mu: float = GLICKO_DEFAULT_RATING
     phi: float = GLICKO_DEFAULT_RD
 
-    def __init__(self, mu=None, phi=None):
-        if mu is not None:
-            self.rating = mu
-        if phi is not None:
-            self.deviation = phi
+    def __init__(self, mu=GLICKO_DEFAULT_RATING, phi=GLICKO_DEFAULT_RD):
+        self.mu = mu
+        self.phi = phi
 
     def update(self, other: Rating, result: int):
         glicko_result = result/2
